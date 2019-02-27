@@ -27,7 +27,8 @@ public class JuegoGrafico {
 	private Listener listener;
 	private final String RUTA = "F:\\Primero\\Programacion\\Proyectos\\JuegoParejas\\src\\imagenes\\";
 	private Victoria ventanaVictoria;
-
+	private int click = 0; // un contador para saber cuantos clicks ha hecho
+	
 	/**
 	 * Launch the application.
 	 */
@@ -59,8 +60,7 @@ public class JuegoGrafico {
 			juego = new Tablero(4, 4);
 			juego.init();
 		} catch (NoEsPar e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 		ventanaVictoria = new Victoria();
 		listener = new Listener();
@@ -85,7 +85,6 @@ public class JuegoGrafico {
 	// los botones
 	class Listener implements MouseListener {
 		Casilla[][] t = juego.tablero;
-		int click = 0; // un contador para saber cuantos clicks ha hecho
 		int xActual;
 		int yActual;
 		int xAnterior;
@@ -161,14 +160,6 @@ public class JuegoGrafico {
 
 	/** Inicia el tablero */
 	private void inicializarTablero() {
-		
-		Component[] tableroVista = panelCeldas.getComponents(); // recojo el tablero de botones para iterarlo
-		for (Component comp : tableroVista) { // itero
-			if (comp instanceof Boton) { // me aseguro que el componente sea un boton
-				Boton boton = (Boton) comp;
-				panelCeldas.remove(boton);
-			}
-		}
 		
 		for (int i = 0; i < juego.getFILAS(); i++) {
 			for (int j = 0; j < juego.getCOLUMNAS(); j++) {
