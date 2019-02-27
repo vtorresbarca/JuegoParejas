@@ -2,7 +2,8 @@ package modelo;
 
 public class Casilla {
 	//clase de la que está formada el tablero del juego y lleva las coordenadas
-	private String rutaImagen;
+	private boolean pickeada = false; //para saber si se ha pulsado
+	private boolean fija = false; //para fijar la casilla
 	private Coordenada coordPareja; //el objeto coordenada que guarde la posicion de su pareja
 	private String tipoAnimal;
 	
@@ -11,14 +12,15 @@ public class Casilla {
 		tipoAnimal = tipo;
 	}
 
-	public String getRutaImagen() {
-		return rutaImagen;
+	//guetters y setters
+	public boolean getPickeada() {
+		return pickeada;
 	}
 
-	public void setRutaImagen(String rutaImagen) {
-		this.rutaImagen = rutaImagen;
+	public void setPickeada(boolean estado) {
+		this.pickeada = estado;
 	}
-
+	
 	public Coordenada getCoordPareja() {
 		return coordPareja;
 	}
@@ -29,5 +31,13 @@ public class Casilla {
 	
 	public String getAnimal() {
 		return this.tipoAnimal;
+	}
+
+	public boolean getFija() {
+		return fija;
+	}
+	
+	public void setFija(boolean estado) {
+		fija = estado;
 	}
 }

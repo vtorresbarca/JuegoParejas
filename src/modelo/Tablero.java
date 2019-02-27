@@ -7,7 +7,8 @@ public class Tablero {
 	private static int COLUMNAS;
 	private int numParejas;
 	public Casilla[][] tablero;
-
+	private int parejasDescubiertas; //va contando las parejas descubiertas
+	
 	// constructor
 
 	public Tablero(int f, int c) throws NoEsPar {
@@ -34,6 +35,12 @@ public class Tablero {
 		return COLUMNAS;
 	}
 
+	public void setParejasDescubiertas() {
+		this.parejasDescubiertas++;
+	}
+	
+	
+	
 	/**
 	 * Crea un duplicado del objeto Tablero creado por el usuario
 	 * 
@@ -69,5 +76,10 @@ public class Tablero {
 			tablero[coords[0].x][coords[0].y] = c1; // tablero en x,y de c1 tiene a c1
 			tablero[coords[1].x][coords[1].y] = c2; // tablero en x,y de c2 tiene a c2
 		}
+	}
+	
+	/**Método que retorna true si el usuario ha ganado el juego o false si no*/
+	public boolean gano() {
+		return parejasDescubiertas == numParejas;
 	}
 }
