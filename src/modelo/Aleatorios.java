@@ -6,7 +6,7 @@ public class Aleatorios {
 
 	// clase que va a tener todas las coordenadas posibles y me da una aleatoria de
 	// la lista
-	private Tablero t; //Hay que conseguir que sea una referencia al tablero que crearemos en el main (con un getTablero que devuelva un tipo Tablero??)
+	private Tablero t = Tablero.creaDuplicado();
 	private static ArrayList<Coordenada> lista = new ArrayList<Coordenada>();
 	private int filas = t.getFILAS();
 	private int columnas = t.getCOLUMNAS();

@@ -1,21 +1,38 @@
 package modelo;
 
+import java.util.ArrayList;
 import java.util.Random;
 
-public enum Animal {
-	PERRO, GATO, VACA, LORO, PEZ, OSO, ARDILLA, CIERVO, GALLINA, BUHO;
+public class Animal {
 	
-	private static final int SIZE = Animal.values().length;
-	private boolean asignado = false; //para saber si ya ha sido asignado para descartarlo
+	private ArrayList<String> animales = new ArrayList<String>();
 	
-	/**Genera un animal aleatorio de la enumeracion y lo retorna*/
-	public static Animal animalAleatorio() {
-		Animal tipo = Animal.values()[(int) (Math.random() * SIZE)];;
-		while(tipo.asignado) { //mientras este asignado genera otro
-			tipo = Animal.values()[(int) (Math.random() * SIZE)];
-		}
-		tipo.asignado = true;
+	//constructor
+	public Animal() {
+		addAnimales();
+	}
+	
+	/**Genera un animal aleatorio de la lista y lo retorna. Una vez retornado, ese valor es descartado
+	 * @return String animal*/
+	public String animalAleatorio() {
+		int index;
+		String valorARetornar;
 		
-		return tipo;
+		index = (int) (Math.random() * animales.size());
+		valorARetornar = animales.get(index);
+		animales.remove(index);
+		
+		return valorARetornar;	
+	}
+	
+	/**Llena la lista de animales con diferentes valores*/
+	private void addAnimales() {
+		String[] lista = {"gato", "perro", "buho", "caballo", "ardilla", "pez", "vaca",
+				"leon", "mono", "pato", "gallina", "tortuga", "tigre", "cangrejo", "ciervo",
+				"oso", "cocodrilo", "rana", "jirafa", "canguro"};
+		
+		for (int i = 0; i < lista.length; i++) {
+			animales.add(lista[i]);
+		}
 	}
 }
